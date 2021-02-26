@@ -1,14 +1,15 @@
 import React from 'react';
 
 const Card = ({ data }) => {
-    console.log("from display", data);
     return (
         <div className="card">
             {
                 data && data.map((singleNoteData, index) => (
-                    <div key={singleNoteData.key} className={index % 2 === 0 ? 'card-component-green' : 'card-component-yellow'}>
-                        <h4>{singleNoteData.heading}</h4>
-                        <p>{singleNoteData.text}</p>
+                    <div key={singleNoteData.key} className={'card-component'}>
+                        <h3>{singleNoteData.heading}</h3>
+                        <h4>{singleNoteData.text}</h4>
+                        <h5 className="tag-color">{singleNoteData.tag}</h5>
+                        { singleNoteData.pinned === true ? (<span><i className="fas fa-thumbtack"></i> {console.log(singleNoteData)}</span>) : ("")}
                     </div>
                 ))
             }
