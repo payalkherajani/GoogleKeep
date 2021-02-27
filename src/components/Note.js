@@ -11,6 +11,7 @@ export const Note = () => {
     const [text, setText] = useState("");
     const [tags, setTags] = useState([]);
     const [pinned, setPinned] = useState(false);
+    const [pinnedNotes, setPinnedNotes] = useState([]);
 
     const showModalFunction = () => {
         setShowModal(true);
@@ -49,13 +50,18 @@ export const Note = () => {
                 pinned,
                 key: Date.now()
             }
-            setNote([...note, newNote]);
+            if (newNote.pinned === true) {
+                setPinnedNotes([...pinnedNotes, newNote]);
+            }
+            else {
+                setNote([...note, newNote]);
+            }
             setHeading("");
             setText("");
             setPinned(false);
         }
         else {
-            alert("Please add heading and title");
+            alert("Please add heading, title and tag");
             setHeading("");
             setText("");
         }
@@ -143,7 +149,7 @@ export const Note = () => {
                 }
             </aside>
             <section className="note-section">
-                <Card data={note} />
+                <Card data={note} pinnedData={pinnedNotes} />
             </section>
         </div>
     )

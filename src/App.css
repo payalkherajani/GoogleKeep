@@ -94,7 +94,7 @@
   }
   
   .modal-main {
-    position:fixed;
+    position: relative;
     background: white;
     width: 50%;
     height: auto;
